@@ -92,14 +92,15 @@ LOCAL_CFLAGS := \
 	-DG_LOG_DOMAIN=\"GLib\"		\
 	-DPCRE_STATIC			\
 	-DG_DISABLE_DEPRECATED		\
-	-DGLIB_COMPILATION
+	-DGLIB_COMPILATION		\
+	-Wno-format-security
 
 ifeq ($(GLIB_BUILD_STATIC),true)
 include $(BUILD_STATIC_LIBRARY)
 else
 LOCAL_STATIC_LIBRARIES := libpcre
-LOCAL_LDLIBS :=				\
-	-llog
+LOCAL_SHARED_LIBRARIES := liblog
+LOCAL_LDLIBS := -llog
 
 include $(BUILD_SHARED_LIBRARY)
 endif

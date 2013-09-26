@@ -20,10 +20,9 @@ LOCAL_CFLAGS :=				\
 ifeq ($(GLIB_BUILD_STATIC),true)
 include $(BUILD_STATIC_LIBRARY)
 else
-LOCAL_SHARED_LIBRARIES := libglib-2.0
+LOCAL_SHARED_LIBRARIES := libglib-2.0 libdl
 
-LOCAL_LDLIBS :=				\
-	-ldl
+LOCAL_LDLIBS := -ldl
 
 include $(BUILD_SHARED_LIBRARY)
 endif
