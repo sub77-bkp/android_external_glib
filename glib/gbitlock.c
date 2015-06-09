@@ -30,9 +30,9 @@
 #include "config.h"
 
 
-#ifdef G_BIT_LOCK_FORCE_FUTEX_EMULATION
+//#ifdef G_BIT_LOCK_FORCE_FUTEX_EMULATION
 #undef HAVE_FUTEX
-#endif
+//#endif
 
 #ifndef HAVE_FUTEX
 static GSList *g_futex_address_list = NULL;
@@ -56,7 +56,7 @@ _g_futex_thread_init (void) {
  * If anyone actually gets bit by this, please file a bug. :)
  */
 #include <linux/futex.h>
-#include <syscall.h>
+#include "linux/syscall.h"
 #include <unistd.h>
 
 /* < private >
